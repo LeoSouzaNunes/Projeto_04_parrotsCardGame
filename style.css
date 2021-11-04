@@ -45,8 +45,12 @@ body{
 .card{
     width: 117px;
     height: 146px;
+}
 
-    
+.back{
+    height: 100%;
+    width: 100%;
+
     background: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
@@ -56,6 +60,9 @@ body{
     background-size: 100px; 
 }
 
+.front{
+   display: none; 
+}
 
 @media(max-width:370px){
 
