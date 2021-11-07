@@ -48,6 +48,7 @@ body{
 .card{
     width: 117px;
     height: 146px;
+    position: relative;
 }
 
 img{
@@ -61,6 +62,10 @@ img{
     background: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
 }
 
 
@@ -72,14 +77,20 @@ img{
 }
 
 .front-face{
-   display: flex;
-   justify-content: center;
-   align-items: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+   transform: rotateY(180deg);
 }
 
-.hidden {
-    display: none;
-}
+.card.picked  .front-face{
+    transform: rotateY(0deg);
+  }
+
+.card.picked .back-face {
+    transform: rotateY(-180deg);
+  }
 
 @media(max-width:370px){
 

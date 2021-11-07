@@ -30,22 +30,45 @@ function addCards() {
     let cards = document.querySelector(".cards");
 
     for (let i = 0; i < numeroCartas; i++) {
-        cards.innerHTML += `   <div onclick="flipCard(this)" class="card" data-identifier="card">
-        <div class="front-face card-layout hidden" data-identifier="front-face">
+        cards.innerHTML += `<div onclick="flipCard(this)" class="card" data-identifier="card">
+        <div class="front-face card-layout" data-identifier="front-face">
         <img src="${pares[i]}" alt="Imagem não encontrada."></img>
         </div>
         <div class="back-face card-layout" data-identifier="back-face"></div>
         </div>`
     }
 }
-function flipCard(cartaClicada) {
-    let cardFront = cartaClicada.querySelector(".card .front-face");
-    let cardBack = cartaClicada.querySelector(".card .back-face");
-    let cards = document.querySelectorAll(".cards ")
+let i = 0;
+let cartasClicadas = [];
 
-    cardFront.classList.toggle("hidden");
-    cardBack.classList.toggle("hidden");
+function flipCard(cartaClicada) {
+
+    i++;
+    cartaClicada.classList.add("picked");
+    cartasClicadas.push(cartaClicada);
+    console.log(cartaClicada);
+
+    if (i === 2) {
+        if (cartasClicadas[i - 2].innerHTML === cartasClicadas[i - 1].innerHTML) {
+            cartasClicadas[i - 2].removeAttribute("onclick")
+            cartasClicadas[i - 1].removeAttribute("onclick")
+            i = 0;
+            cartasClicadas = [];
+        } else {
+            setTimeout(removerCartas, 1000)
+        }
+    }
+
 }
+
+function removerCartas() {
+    cartasClicadas[i - 2].classList.remove("picked")
+    cartasClicadas[i - 1].classList.remove("picked")
+
+    cartasClicadas = [];
+    i = 0
+}
+
 
 addCards();
 
