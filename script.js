@@ -38,40 +38,53 @@ function addCards() {
         </div>`
     }
 }
+let cartasViradas = [];
+let numeroDeJogadas = 0;
 let i = 0;
 let cartasClicadas = [];
 
 function flipCard(cartaClicada) {
-
+    numeroDeJogadas++;
     i++;
     cartaClicada.classList.add("picked");
     cartasClicadas.push(cartaClicada);
-    console.log(cartaClicada);
 
     if (i === 2) {
         if (cartasClicadas[i - 2].innerHTML === cartasClicadas[i - 1].innerHTML) {
-            cartasClicadas[i - 2].removeAttribute("onclick")
-            cartasClicadas[i - 1].removeAttribute("onclick")
+            cartasClicadas[i - 2].removeAttribute("onclick");
+            cartasClicadas[i - 1].removeAttribute("onclick");
             i = 0;
             cartasClicadas = [];
         } else {
-            setTimeout(removerCartas, 1000)
+            setTimeout(removerCartas, 1000);
         }
+    }
+
+    fimDeJogo();
+}
+
+function removerCartas() {
+    cartasClicadas[i - 2].classList.remove("picked");
+    cartasClicadas[i - 1].classList.remove("picked");
+
+    cartasClicadas = [];
+    i = 0;
+}
+
+function fimDeJogo() {
+
+    cartasViradas = document.querySelectorAll(".picked");
+
+    if (cartasViradas.length === numeroCartas) {
+        alert(`Você ganhou em ${numeroDeJogadas} jogadas!`)
     }
 
 }
 
-function removerCartas() {
-    cartasClicadas[i - 2].classList.remove("picked")
-    cartasClicadas[i - 1].classList.remove("picked")
-
-    cartasClicadas = [];
-    i = 0
-}
-
-
-addCards();
 
 function comparador() {
     return Math.random() - 0.5;
 }
+
+
+addCards();
