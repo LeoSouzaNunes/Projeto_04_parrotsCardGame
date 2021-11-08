@@ -1,5 +1,8 @@
+let cartasViradas = [];
+let numeroDeJogadas = 0;
+let i = 0;
+let cartasClicadas = [];
 let numeroCartas;
-
 
 function addCards() {
 
@@ -38,10 +41,6 @@ function addCards() {
         </div>`
     }
 }
-let cartasViradas = [];
-let numeroDeJogadas = 0;
-let i = 0;
-let cartasClicadas = [];
 
 function flipCard(cartaClicada) {
     numeroDeJogadas++;
@@ -76,15 +75,29 @@ function fimDeJogo() {
     cartasViradas = document.querySelectorAll(".picked");
 
     if (cartasViradas.length === numeroCartas) {
-        alert(`Você ganhou em ${numeroDeJogadas} jogadas!`)
+        alert(`Você ganhou em ${numeroDeJogadas} jogadas e em ${tempo - 1} segundos`)
+        let playAgain = prompt("Gostaria de jogar novamente?");
+        if (playAgain === "sim" || "Sim") {
+            location.reload(true);
+        }
     }
 
 }
 
+let tempo = 0;
+let cronometro = setInterval(contadorTimer, 1000);
+
+function contadorTimer() {
+    let textoTempo = document.querySelector(".timer")
+
+    textoTempo.innerHTML = tempo++;
+
+    if (cartasViradas === numeroCartas) {
+        clearInterval(cronometro)
+    }
+}
 
 function comparador() {
     return Math.random() - 0.5;
 }
-
-
 addCards();

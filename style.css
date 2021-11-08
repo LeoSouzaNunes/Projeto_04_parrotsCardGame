@@ -6,15 +6,27 @@ body{
     font-family: 'Roboto', sans-serif;
 
     background: #EEF9BF;
-
-    gap: 150px 0px;
 }  
 
+.timer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+
+    margin-top: 30px;
+    margin-left: 90%;
+    width: 40px;
+    height: 25px;
+
+    color: #75B79E;
+    border: 2px solid #75B79E;
+}
 .title{
     width: 100%;
     height: 63px;
 
-    padding-top: 40px;
+    margin-top: 40px;
 }
 .title h1{
     display: flex;
@@ -37,11 +49,10 @@ body{
     align-items: center;
     flex-wrap: wrap;
     
+    margin-top: 130px;
     padding-bottom: 35px;
-    width: 78.5%;
+    width: 75%;
     gap: 34px 34px;
-    
-    
 }
 
 
@@ -97,7 +108,14 @@ img{
 body {
     gap: 47px 0px;
 }
-
+.timer{
+    position: fixed;
+    top: 50px;
+    right: 10px;
+}
+.title{
+    margin-top: 0px;
+}
 .title h1{
     display: flex;
     justify-content: center;
@@ -117,6 +135,7 @@ body {
     align-items: center;
     flex-wrap: nowrap;
 
+    margin-top: 0px;
     padding-top: 47px;
     margin-bottom: 30px;
     width: 100%;
