@@ -1,8 +1,6 @@
-let cartasViradas = [];
-let numeroDeJogadas = 0;
-let i = 0;
-let cartasClicadas = [];
-let numeroCartas;
+let cartasViradas = [], cartasClicadas = [];
+let numeroDeJogadas = 0, i = 0, tempo = 0, numeroCartas;
+let cronometro = setInterval(contadorTimer, 1000);
 
 function addCards() {
 
@@ -84,19 +82,16 @@ function fimDeJogo() {
 
 }
 
-let tempo = 0;
-let cronometro = setInterval(contadorTimer, 1000);
-
 function contadorTimer() {
     let textoTempo = document.querySelector(".timer")
 
     textoTempo.innerHTML = tempo++;
-
-    if (cartasViradas === numeroCartas) {
-        clearInterval(cronometro)
-    }
 }
 
+
+if (cartasViradas === numeroCartas) {
+    clearInterval(cronometro)
+}
 function comparador() {
     return Math.random() - 0.5;
 }
